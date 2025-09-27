@@ -5,11 +5,11 @@ import sys
 import json
 
 
-# --- Path Fix for Streamlit Execution (CRUCIAL for imports to work) ---
+# This block ensures that the Python interpreter can find modules
+# (like 'agent.py') when running the script from a Streamlit environment.
 current_dir = os.path.dirname(__file__)
 if current_dir not in sys.path:
     sys.path.append(current_dir)
-# ---------------------------------------------------------------------
 
 
 from agent import IntelligentFormAgent
@@ -23,6 +23,10 @@ st.set_page_config(
 
 @st.cache_resource
 def get_agent():
+    """
+    Initializes the IntelligentFormAgent. This function is cached
+    to prevent re-initialization on every rerun.
+    """
     try:
         return IntelligentFormAgent()
     except Exception as e:
@@ -59,7 +63,7 @@ if "holistic_result" not in st.session_state:
 
 st.title("📄 Intelligent Form Agent")
 st.markdown(
-    "Upload forms (PDF/PNG/JPG/TXT/DOCX) to enable automatic extraction, QA, and summarization using large language models."
+    "Upload forms (PDF/TXT/DOCX) to enable automatic extraction, QA, and summarization using large language models."
 )
 
 
@@ -72,7 +76,7 @@ if not agent:
 
 
 st.header("1. Upload Forms")
-supported_file_types = ["pdf", "png", "jpg", "jpeg", "txt", "doc", "docx"]
+supported_file_types = ["pdf", "txt", "doc", "docx"]
 uploaded_files = st.file_uploader(
     f"Choose form files ({'/'.join([t.upper() for t in supported_file_types])}). Uploading multiple files enables Holistic Analysis.",
     type=supported_file_types,
@@ -88,6 +92,7 @@ if uploaded_files:
                 file_type = uploaded_file.name.split(".")[-1].lower()
 
                 if file_type in ["doc", "docx"]:
+                    # DOC/DOCX files require special libraries and are explicitly unsupported here
                     raw_text = f"Error: File type .{file_type} not supported for automated extraction."
                 else:
                     file_content = io.BytesIO(uploaded_file.read())
