@@ -16,9 +16,8 @@
     - git clone https://github.com/vengadesh-max/FormsummarizerAgent.git
     - cd intelligent-form-agent
 2. Create and Configure .env
-    - Add your Gemini Pro API key (or Hugging Face token) to .env:
+    - Add your Gemini Pro API key to .env:
     - Ex : GEMINI_API_KEY=your_api_key_here
-    - Ex : HUGGING_FACE_TOKEN=your_hf_token_here
 3. Install Dependencies
    - pip install -r requirements.txt
 4. Run the App
@@ -34,7 +33,6 @@
 
 ## Environment Variables
  - GEMINI_API_KEY: Your Google Gemini Pro API key (required for Gemini API usage)
- - HUGGING_FACE_TOKEN: Your Hugging Face API token (optional fallback)
  - imp : Place these in your .env file at project root.
 
 ## Notes
@@ -55,4 +53,5 @@
   ![Demo](sampleoutput/screenshot_1923.png)
   ## Holistic insights
   ![Demo](sampleoutput/screenshot_1924.png)
+
 
