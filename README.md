@@ -22,8 +22,8 @@
 3. Install Dependencies
    - pip install -r requirements.txt
 4. Run the App
-   -streamlit run src/app.py
-   -The app will start at http://localhost:8501
+   - streamlit run src/app.py
+   - The app will start at http://localhost:8501
 
 ## Usage
  - Upload a supported form/document (PDF, PNG, JPG, TXT).
@@ -46,4 +46,13 @@
  - API Errors: Check .env is present and credentials are correct.
  - OCR errors: Ensure Tesseract and PIL are installed.
  - Permissions: Gemini API access must be enabled in your Google project.
+
+## Sample outputs
+ - Demo video : https://drive.google.com/file/d/1kmRguQp0KOW2nFyXeglGWMR4-4GwLgIz/view?usp=sharing
+  ## Q&A 
+  ![Demo](sampleoutput/screenshot_1922.png)
+  ## Summarization
+  ![Demo](sampleoutput/screenshot_1923.png)
+  ## Holistic insights
+  ![Demo](sampleoutput/screenshot_1924.png)
 
